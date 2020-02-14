@@ -8,6 +8,16 @@ class JSONDatabase:
 	DatabaseLoc = "./Databases/"
 	def __init__(self, databaseLoc):
 		self.DatabaseLoc = "./" + databaseLoc + "/"
+
+		self.TableStructure = {
+				"Database Name": {
+					"Details": {},
+					"Column Structure": {},
+					"Rows": {}
+				}
+			}
+
+		self.validTypes = ["String", "Int", "Bool"]
 		
 
 	def createDefaultFile(self, Name):
@@ -52,8 +62,7 @@ class JSONDatabase:
 
 
 	#Check Database & Table Name for spaces
-	def checkSpaces(self, Name):
-		enterName = Name
+	def checkSpaces(self, enterName):
 		if enterName.isspace() == True:	
 			return True
 		else:
@@ -97,12 +106,12 @@ class JSONDatabase:
 
 	
 	#Create table
-	def createTable(self, dbName, Name, rowNames):
+	def createTable(self, dbName, Name, *columnNames):
 		#Tries if the arguments is set
 		try:
 			dbName
 			Name
-			rowNames
+			columnNames
 		except NameError:
 			print("well, it WASN'T defined after all!")
 			return False
@@ -114,10 +123,30 @@ class JSONDatabase:
 
 				if checkTableExists == False:
 					
-					for rowName in rowNames:
-						
-
+					f = open(self.DatabaseLoc + dbName + "/" + Name + ".json", "w")
+					f.write(self.TableStructure)
+					f.close()
 					print("Table was created!")
+					print("Added details and columns")
+
+					f = open(self.DatabaseLoc + dbName + "/" + Name + ".json", "r")
+					data = json.loads(f.read())
+
+					f.close()
+					# Setting the column and their type
+					for column in columnNames:
+						columnText = column.split("-")
+						if columnText[1] in self.validTypes:
+							new_column = {columnText[0]: columnText[1]}
+							data['Database Name']['Column Structure'].update(new_column)
+						else:
+							print("You did not insert a valid data type. Fix your error and try again")
+							return False
+							exit()
+
+					with open(self.DatabaseLoc + dbName + "/" + Name + ".json", 'w') as f:
+						json.dump(data, f)
+					
 					return True
 
 				else:

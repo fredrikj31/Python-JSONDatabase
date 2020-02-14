@@ -1,9 +1,12 @@
 {
 	"Database Name": {
-		"Details": { "Created At": "Date" },
+		"Details": {
+			"Created At": "Date"
+		},
 		"Column Structure": {
-			"Column name": "String",
-			"Column name 2": "String"
+			"column1": "String",
+			"Test Column": "Int",
+			"Column2": "Bool"
 		},
 		"Rows": {
 			"1": {
@@ -11,7 +14,11 @@
 				"Test Column": 1,
 				"Column2": true
 			},
-			"2": { "column1": "Row 2", "Test Column": 100, "Column2": true },
+			"2": {
+				"column1": "Row 2",
+				"Test Column": 100,
+				"Column2": true
+			},
 			"3": {
 				"column1": "Test row 3",
 				"Test Column": 99,
