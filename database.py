@@ -25,7 +25,15 @@ class JSONDatabase:
 
 		defaultFileContent = {
 			"Database Name": Name,
-			"Created At": time.strftime("%d/%m/%Y - %H:%M:%S"),
+			"Details": {
+				"Created At": time.strftime("%d/%m/%Y - %H:%M:%S")
+			},
+			"Column Structure": {
+
+			},
+			"Rows": {
+				
+			}
 		}
 
 		result = json.dumps(defaultFileContent)
