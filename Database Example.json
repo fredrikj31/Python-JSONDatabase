@@ -8,27 +8,27 @@
 			"Test Column": "Int",
 			"Column2": "Bool"
 		},
-		"Rows": {
-			"1": {
+		"Rows": [
+			{
 				"column1": "Hej med dig",
 				"Test Column": 1,
 				"Column2": true
 			},
-			"2": {
+			{
 				"column1": "Row 2",
 				"Test Column": 100,
 				"Column2": true
 			},
-			"3": {
+			{
 				"column1": "Test row 3",
 				"Test Column": 99,
 				"Column2": false
 			},
-			"4": {
+			{
 				"column1": "Test row 4",
 				"Test Column": 120312,
 				"Column2": false
 			}
-		}
+		]
 	}
 }
